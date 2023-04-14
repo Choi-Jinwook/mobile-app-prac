@@ -2,13 +2,14 @@ package edu.skku.cs.pa1
 
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 
-class WordAdapter(val dataList: MutableList<String>, val context: Context, val selectedWord: String, val enteredWord: String): BaseAdapter() {
+class WordAdapter(val dataList: MutableList<String>, val context: Context, val selectedWord: String): BaseAdapter() {
     override fun getCount(): Int {
         return dataList.size
     }
@@ -39,69 +40,51 @@ class WordAdapter(val dataList: MutableList<String>, val context: Context, val s
         text5.text = data[4].toString()
 
         val selectedWordAlphabets = selectedWord.toCharArray().toSet()
-        val enteredWordAlphabets = enteredWord.toCharArray().toSet()
+        val enteredWordAlphabets = data.toCharArray().toSet()
         val commonAlphabets = selectedWordAlphabets.intersect(enteredWordAlphabets)
+        val uncommonAlphabets = enteredWordAlphabets.subtract(commonAlphabets)
 
-        if (commonAlphabets.toString().contains(text1.text)) {
-            if (selectedWord[0] == enteredWord[0]) {
-                text1.setBackgroundColor((Color.parseColor("#99F691")))
-                text1.setTextColor((Color.parseColor("#000000")))
+        text1.setTextColor(if (commonAlphabets.contains(data[0])) Color.parseColor("#000000") else Color.parseColor("#FFFFFF"))
+        text2.setTextColor(if (commonAlphabets.contains(data[1])) Color.parseColor("#000000") else Color.parseColor("#FFFFFF"))
+        text3.setTextColor(if (commonAlphabets.contains(data[2])) Color.parseColor("#000000") else Color.parseColor("#FFFFFF"))
+        text4.setTextColor(if (commonAlphabets.contains(data[3])) Color.parseColor("#000000") else Color.parseColor("#FFFFFF"))
+        text5.setTextColor(if (commonAlphabets.contains(data[4])) Color.parseColor("#000000") else Color.parseColor("#FFFFFF"))
+
+        text1.setBackgroundColor(if (uncommonAlphabets.contains(data[0])) Color.parseColor("#787C7E") else {
+            if (data[0] == selectedWord[0]) {
+                Color.parseColor("#99F691")
             } else {
-                text1.setBackgroundColor((Color.parseColor("#FFE46F")))
-                text1.setTextColor((Color.parseColor("#000000")))
+                Color.parseColor("#FFE46F")
             }
-        } else {
-            text1.setBackgroundColor((Color.parseColor(("#787C7E"))))
-            text1.setTextColor((Color.parseColor("#FFFFFF")))
-        }
-        if (commonAlphabets.toString().contains(text2.text)) {
-            if (selectedWord[1] == enteredWord[1]) {
-                text2.setBackgroundColor((Color.parseColor("#99F691")))
-                text2.setTextColor((Color.parseColor("#000000")))
+        })
+        text2.setBackgroundColor(if (uncommonAlphabets.contains(data[1])) Color.parseColor("#787C7E") else {
+            if (data[1] == selectedWord[1]) {
+                Color.parseColor("#99F691")
             } else {
-                text2.setBackgroundColor((Color.parseColor("#FFE46F")))
-                text2.setTextColor((Color.parseColor("#000000")))
+                Color.parseColor("#FFE46F")
             }
-        } else {
-            text2.setBackgroundColor((Color.parseColor(("#787C7E"))))
-            text2.setTextColor((Color.parseColor("#FFFFFF")))
-        }
-        if (commonAlphabets.toString().contains(text3.text)) {
-            if (selectedWord[2] == enteredWord[2]) {
-                text3.setBackgroundColor((Color.parseColor("#99F691")))
-                text3.setTextColor((Color.parseColor("#000000")))
+        })
+        text3.setBackgroundColor(if (uncommonAlphabets.contains(data[2])) Color.parseColor("#787C7E") else {
+            if (data[2] == selectedWord[2]) {
+                Color.parseColor("#99F691")
             } else {
-                text3.setBackgroundColor((Color.parseColor("#FFE46F")))
-                text3.setTextColor((Color.parseColor("#000000")))
+                Color.parseColor("#FFE46F")
             }
-        } else {
-            text3.setBackgroundColor((Color.parseColor(("#787C7E"))))
-            text3.setTextColor((Color.parseColor("#FFFFFF")))
-        }
-        if (commonAlphabets.toString().contains(text4.text)) {
-            if (selectedWord[3] == enteredWord[3]) {
-                text4.setBackgroundColor((Color.parseColor("#99F691")))
-                text4.setTextColor((Color.parseColor("#000000")))
+        })
+        text4.setBackgroundColor(if (uncommonAlphabets.contains(data[3])) Color.parseColor("#787C7E") else {
+            if (data[3] == selectedWord[3]) {
+                Color.parseColor("#99F691")
             } else {
-                text4.setBackgroundColor((Color.parseColor("#FFE46F")))
-                text4.setTextColor((Color.parseColor("#000000")))
+                Color.parseColor("#FFE46F")
             }
-        } else {
-            text4.setBackgroundColor((Color.parseColor(("#787C7E"))))
-            text4.setTextColor((Color.parseColor("#FFFFFF")))
-        }
-        if (commonAlphabets.toString().contains(text5.text)) {
-            if (selectedWord[4] == enteredWord[4]) {
-                text5.setBackgroundColor((Color.parseColor("#99F691")))
-                text5.setTextColor((Color.parseColor("#000000")))
+        })
+        text5.setBackgroundColor(if (uncommonAlphabets.contains(data[4])) Color.parseColor("#787C7E") else {
+            if (data[4] == selectedWord[4]) {
+                Color.parseColor("#99F691")
             } else {
-                text5.setBackgroundColor((Color.parseColor("#FFE46F")))
-                text5.setTextColor((Color.parseColor("#000000")))
+                Color.parseColor("#FFE46F")
             }
-        } else {
-            text5.setBackgroundColor((Color.parseColor(("#787C7E"))))
-            text5.setTextColor((Color.parseColor("#FFFFFF")))
-        }
+        })
 
         return generatedView
     }

@@ -16,7 +16,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:textSize="30sp"
-            android:textAlignment="center"
+            android:gravity="center"
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/text2"
@@ -32,7 +32,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:textSize="30sp"
-            android:textAlignment="center"
+            android:gravity="center"
 
             app:layout_constraintStart_toEndOf="@id/text1"
             app:layout_constraintEnd_toStartOf="@id/text3"
@@ -48,7 +48,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:textSize="30sp"
-            android:textAlignment="center"
+            android:gravity="center"
 
             app:layout_constraintStart_toEndOf="@id/text2"
             app:layout_constraintEnd_toStartOf="@id/text4"
@@ -64,7 +64,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:textSize="30sp"
-            android:textAlignment="center"
+            android:gravity="center"
 
             app:layout_constraintStart_toEndOf="@id/text3"
             app:layout_constraintEnd_toStartOf="@id/text5"
@@ -80,7 +80,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:textSize="30sp"
-            android:textAlignment="center"
+            android:gravity="center"
 
             app:layout_constraintStart_toEndOf="@id/text4"
             app:layout_constraintEnd_toEndOf="parent"
